@@ -26,6 +26,8 @@
     <ClCompile Include="framework\EliteAI\EliteDecisionMaking\EliteBehaviorTree\EBehaviorTree.cpp" />
     <ClCompile Include="framework\EliteAI\EliteGraphs\EInfluenceMap.cpp" />
     <ClCompile Include="projects\App_AmbientInteractions\App_AmbientInteractions.cpp" />
+    <ClCompile Include="projects\Shared\SteeringAgent.cpp" />
+    <ClCompile Include="projects\Shared\SteeringBehaviors.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="projects\App_Selector.h" />
@@ -98,6 +100,9 @@
     <ClInclude Include="framework\EliteAI\EliteDecisionMaking\EliteBehaviorTree\EBehaviorTree.h" />
     <ClInclude Include="framework\EliteAI\EliteGraphs\EInfluenceMap.h" />
     <ClInclude Include="projects\App_AmbientInteractions\App_AmbientInteractions.h" />
+    <ClInclude Include="projects\Shared\SteeringAgent.h" />
+    <ClInclude Include="projects\Shared\SteeringBehaviors.h" />
+    <ClInclude Include="projects\Shared\SteeringHelpers.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="imgui.ini" />
