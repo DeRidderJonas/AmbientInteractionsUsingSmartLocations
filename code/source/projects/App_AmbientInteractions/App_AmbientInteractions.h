@@ -1,6 +1,7 @@
 #pragma once
 #include "framework/EliteInterfaces/EIApp.h"
 #include "projects/Shared/SteeringAgent.h"
+#include "SmartLocation.h"
 
 class App_AmbientInteractions final : public IApp
 {
@@ -20,5 +21,8 @@ private:
 
 	//World
 	const float m_TrimWorldSize{ 70.f };
+
+	//Smart locations
+	std::vector<SmartLocation> m_SmartLocations{};
 };
 

@@ -322,6 +322,7 @@
     <ClCompile Include="projects\Shared\NavigationColliderElement.cpp" />
     <ClCompile Include="projects\Shared\SteeringAgent.cpp" />
     <ClCompile Include="projects\Shared\SteeringBehaviors.cpp" />
+    <ClCompile Include="projects\App_AmbientInteractions\SmartLocation.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug_Exam|Win32'">Create</PrecompiledHeader>
@@ -402,6 +403,7 @@
     <ClInclude Include="projects\Shared\SteeringAgent.h" />
     <ClInclude Include="projects\Shared\SteeringBehaviors.h" />
     <ClInclude Include="projects\Shared\SteeringHelpers.h" />
+    <ClInclude Include="projects\App_AmbientInteractions\SmartLocation.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>

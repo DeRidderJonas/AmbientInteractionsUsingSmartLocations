@@ -43,6 +43,7 @@ public:
 	void SetToWander() { m_pSteeringBehavior = m_pWander; }
 	void SetToSeek() { m_pSteeringBehavior = m_pSeek; }
 	ISteeringBehavior* GetSteeringBehavior() const { return m_pSteeringBehavior; }
+	void SetTarget(const TargetData& target) { m_pSteeringBehavior->SetTarget(target); }
 
 	void SetRenderBehavior(bool isEnabled) { m_RenderBehavior = isEnabled; }
 	bool CanRenderBehavior() const { return m_RenderBehavior; }

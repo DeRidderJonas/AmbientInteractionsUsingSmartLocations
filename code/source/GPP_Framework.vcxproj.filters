@@ -28,6 +28,7 @@
     <ClCompile Include="projects\App_AmbientInteractions\App_AmbientInteractions.cpp" />
     <ClCompile Include="projects\Shared\SteeringAgent.cpp" />
     <ClCompile Include="projects\Shared\SteeringBehaviors.cpp" />
+    <ClCompile Include="projects\App_AmbientInteractions\SmartLocation.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="projects\App_Selector.h" />
@@ -103,6 +104,7 @@
     <ClInclude Include="projects\Shared\SteeringAgent.h" />
     <ClInclude Include="projects\Shared\SteeringBehaviors.h" />
     <ClInclude Include="projects\Shared\SteeringHelpers.h" />
+    <ClInclude Include="projects\App_AmbientInteractions\SmartLocation.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="imgui.ini" />
