@@ -1,6 +1,6 @@
 #pragma once
 #include "framework/EliteInterfaces/EIApp.h"
-#include "projects/Shared/SteeringAgent.h"
+#include "projects/App_AmbientInteractions/NpcAgent.h"
 #include "SmartLocation.h"
 
 class App_AmbientInteractions final : public IApp
@@ -17,12 +17,12 @@ public:
 private:
 	//Agents
 	const int m_AmountOfAgents{ 20 };
-	std::vector<SteeringAgent*> m_pAgents{};
+	std::vector<NpcAgent*> m_pAgents{};
 
 	//World
 	const float m_TrimWorldSize{ 70.f };
 
 	//Smart locations
-	std::vector<SmartLocation> m_SmartLocations{};
+	std::vector<SmartLocation*> m_pSmartLocations{};
 };
 
