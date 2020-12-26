@@ -69,8 +69,16 @@ void TwoAgentsTalking::End()
     m_pBlackboard->GetData("agent0", agent0);
     m_pBlackboard->GetData("agent1", agent1);
 
-    if(agent0) agent0->Release();
-    if(agent1) agent1->Release();
+    if (agent0)
+    {
+        agent0->Release();
+        agent0->SetToWander();
+    }
+    if (agent1)
+    {
+        agent1->Release();
+        agent1->SetToWander();
+    }
 
     Script::End();
 }

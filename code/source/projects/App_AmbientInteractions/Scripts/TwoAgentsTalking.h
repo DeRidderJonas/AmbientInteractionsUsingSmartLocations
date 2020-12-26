@@ -13,7 +13,7 @@ public:
 	virtual bool Update(float deltaTime) override;
 	virtual void End() override;
 private:
-	float m_AmountOfSecondsTalking{ 2.f };
+	float m_AmountOfSecondsTalking{ 10.f };
 
 	virtual bool RoleAllocation() override;
 };
