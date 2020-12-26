@@ -14,7 +14,5 @@ public:
 	virtual void End() override;
 private:
 	float m_AmountOfSecondsTalking{ 10.f };
-
-	virtual bool RoleAllocation() override;
 };
 

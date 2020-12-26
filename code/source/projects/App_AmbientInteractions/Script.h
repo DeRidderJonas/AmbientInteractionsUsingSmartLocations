@@ -25,7 +25,7 @@ protected:
 	Elite::Blackboard* m_pBlackboard = nullptr;
 	std::vector<Role> m_Roles{};
 	bool AreAllRolesMet(Elite::Blackboard* pBlackboard);
-	virtual bool RoleAllocation() = 0;
+	bool RoleAllocation();
 
 	bool m_IsRunning = false;
 	float m_TimeElapsed = 0.f;

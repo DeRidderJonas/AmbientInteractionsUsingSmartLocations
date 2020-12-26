@@ -36,6 +36,8 @@ bool Script::Update(float deltaTime)
 
 void Script::End()
 {
+	for (Role& role : m_Roles) role.OnScriptEnd();
+
 	delete m_pBlackboard;
 	m_pBlackboard = nullptr;
 	m_IsRunning = false;
@@ -77,4 +79,51 @@ bool Script::AreAllRolesMet(Elite::Blackboard* pBlackboard)
 	}
 
 	return isValid;
+}
+
+bool Script::RoleAllocation()
+{
+	std::vector<NpcAgent*>* pAgents = nullptr;
+	bool dataAvailable = m_pBlackboard->GetData("agents", pAgents);
+	if (!dataAvailable) return false;
+
+	//Shuffle all participants to counter any unintentional bias towards first or last NPC
+	std::random_shuffle(pAgents->begin(), pAgents->end());
+
+	std::map<Role*, NpcAgent*> agentsReserve{};
+	for (NpcAgent* pAgent : *pAgents)
+	{
+		for (Role& role : m_Roles)
+		{
+			if (role.IsDynamicJoin()) continue;
+			if (pAgent->CanAssumeRole(role.GetNames()))
+			{
+				if (role.IsCardinalitySatisfied()) //Minimum amount of agents has been reached
+				{
+					agentsReserve.emplace(&role, pAgent);
+					continue;
+				}
+
+				role.IncrementCardinality();
+				role.AcquireAgent(pAgent);
+			}
+		}
+	}
+
+	//Fill up slots to max cardinality if possible
+	for (const std::pair<Role*, NpcAgent*>& pair : agentsReserve)
+	{
+		//If claimed by role in previous loop or previous role in this loop, ignore agent
+		if (!pair.second->IsAvailable() || !pair.first->CanAcquireAgent()) continue;
+
+		pair.first->AcquireAgent(pair.second);
+	}
+
+	for (Role& role : m_Roles)
+	{
+		if (role.IsDynamicJoin()) continue;
+		if (!role.IsCardinalitySatisfied()) return false;
+	}
+
+	return true;
 }
