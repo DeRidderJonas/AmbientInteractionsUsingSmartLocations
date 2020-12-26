@@ -332,7 +332,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_Exam|Win32'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="projects\App_AmbientInteractions\Scripts\TwoAgentsTalking.cpp" />
+    <ClCompile Include="projects\App_AmbientInteractions\Scripts\AgentsTalking.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="projects\App_AmbientInteractions\NpcAgent.h" />
@@ -412,7 +412,7 @@
     <ClInclude Include="projects\App_AmbientInteractions\Script.h" />
     <ClInclude Include="projects\App_AmbientInteractions\Role.h" />
     <ClInclude Include="stdafx.h" />
-    <ClInclude Include="projects\App_AmbientInteractions\Scripts\TwoAgentsTalking.h" />
+    <ClInclude Include="projects\App_AmbientInteractions\Scripts\AgentsTalking.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="imgui.ini" />

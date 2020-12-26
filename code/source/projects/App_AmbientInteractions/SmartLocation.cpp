@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "SmartLocation.h"
-#include "projects/App_AmbientInteractions/Scripts/TwoAgentsTalking.h"
+#include "projects/App_AmbientInteractions/Scripts/AgentsTalking.h"
 
 SmartLocation::SmartLocation(const Elite::Vector2& position, float notifyRange)
 	: m_Position{ position }
@@ -11,7 +11,7 @@ SmartLocation::SmartLocation(const Elite::Vector2& position, float notifyRange)
 	m_pBlackboard->AddData("agents", &m_AvailableAgents);
 
 	//Add available scripts
-	m_pScripts.push_back(new TwoAgentsTalking());
+	m_pScripts.push_back(new AgentsTalking(2,1));
 }
 
 SmartLocation::~SmartLocation()

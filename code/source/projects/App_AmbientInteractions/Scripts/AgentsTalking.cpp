@@ -1,22 +1,27 @@
 #include "stdafx.h"
-#include "TwoAgentsTalking.h"
+#include "AgentsTalking.h"
 #include "projects/App_AmbientInteractions/NpcAgent.h"
 
-TwoAgentsTalking::TwoAgentsTalking()
+AgentsTalking::AgentsTalking(size_t min_agents, size_t max_agents, size_t min_agents_dynamic, size_t max_agents_dynamic)
     : Script()
 {
-    m_Roles.push_back({ Role::Name::AnyHuman, Role::Flag::LeaveAfterEnd, 2 }); //NPCs needed: 2 or 3 human npcs. All must leave after End()
-    m_Roles.push_back({ Role::Name::AnyHuman, Role::Flag::LeaveAfterEnd | Role::Flag::DynamicJoin, 1 });
+    m_Roles.push_back({ Role::Name::AnyHuman, Role::Flag::LeaveAfterEnd, min_agents, max_agents });
+    m_Roles.push_back({ Role::Name::AnyHuman, Role::Flag::LeaveAfterEnd | Role::Flag::DynamicJoin, min_agents_dynamic, max_agents_dynamic });
 }
 
-bool TwoAgentsTalking::IsPreconditionMet(Elite::Blackboard* pBlackboard)
+AgentsTalking::AgentsTalking(size_t agents, size_t agents_dynamic)
+    : AgentsTalking(agents, agents, agents_dynamic, agents_dynamic)
+{
+}
+
+bool AgentsTalking::IsPreconditionMet(Elite::Blackboard* pBlackboard)
 {
     if (!Script::IsPreconditionMet(pBlackboard)) return false;
 
     return Script::AreAllRolesMet(pBlackboard);
 }
 
-void TwoAgentsTalking::Start(Elite::Blackboard* pBlackboard)
+void AgentsTalking::Start(Elite::Blackboard* pBlackboard)
 {
     Script::Start(pBlackboard);
     bool roleAllocationSuccess = RoleAllocation();
@@ -34,7 +39,7 @@ void TwoAgentsTalking::Start(Elite::Blackboard* pBlackboard)
     agent1->SetToSeek();
 }
 
-bool TwoAgentsTalking::Update(float deltaTime)
+bool AgentsTalking::Update(float deltaTime)
 {
     if(!Script::Update(deltaTime)) return false;
 
@@ -59,12 +64,12 @@ bool TwoAgentsTalking::Update(float deltaTime)
     return true;
 }
 
-void TwoAgentsTalking::End()
+void AgentsTalking::End()
 {
     Script::End();
 }
 
-bool TwoAgentsTalking::IsEndConditionMet()
+bool AgentsTalking::IsEndConditionMet()
 {
     if (!Script::IsEndConditionMet()) return false;
 

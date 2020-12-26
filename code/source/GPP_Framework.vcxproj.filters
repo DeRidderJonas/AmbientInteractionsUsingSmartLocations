@@ -31,8 +31,8 @@
     <ClCompile Include="projects\App_AmbientInteractions\SmartLocation.cpp" />
     <ClCompile Include="projects\App_AmbientInteractions\Script.cpp" />
     <ClCompile Include="projects\App_AmbientInteractions\NpcAgent.cpp" />
-    <ClCompile Include="projects\App_AmbientInteractions\Scripts\TwoAgentsTalking.cpp" />
     <ClCompile Include="projects\App_AmbientInteractions\Role.cpp" />
+    <ClCompile Include="projects\App_AmbientInteractions\Scripts\AgentsTalking.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="projects\App_Selector.h" />
@@ -111,8 +111,8 @@
     <ClInclude Include="projects\App_AmbientInteractions\SmartLocation.h" />
     <ClInclude Include="projects\App_AmbientInteractions\Script.h" />
     <ClInclude Include="projects\App_AmbientInteractions\NpcAgent.h" />
-    <ClInclude Include="projects\App_AmbientInteractions\Scripts\TwoAgentsTalking.h" />
     <ClInclude Include="projects\App_AmbientInteractions\Role.h" />
+    <ClInclude Include="projects\App_AmbientInteractions\Scripts\AgentsTalking.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="imgui.ini" />
