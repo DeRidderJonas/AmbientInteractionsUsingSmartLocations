@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Script.h"
+#include <projects/App_AmbientInteractions/NpcAgent.h>
 
 Script::~Script()
 {
@@ -30,4 +31,37 @@ void Script::End()
 void Script::OnError()
 {
 	End();
+}
+
+bool Script::AreAllRolesMet(Elite::Blackboard* pBlackboard)
+{
+	std::vector<NpcAgent*>* pAgents = nullptr;
+	bool dataAvailable = pBlackboard->GetData("agents", pAgents);
+	if (!dataAvailable) return false;
+
+	for (NpcAgent* pAgent : *pAgents)
+	{
+		for (Role& role : m_Roles)
+		{
+			if (pAgent->CanAssumeRole(role.GetNames()))
+			{
+				if (role.IsCardinalitySatisfied()) //Minimum amount of agents has been reached
+				{
+					continue;
+				}
+
+				role.IncrementCardinality();
+			}
+
+		}
+	}
+
+	bool isValid = true;
+	for (Role& role : m_Roles)
+	{
+		if (!role.IsCardinalitySatisfied()) isValid = false;
+		role.ResetCardinality();
+	}
+
+	return isValid;
 }

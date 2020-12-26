@@ -325,6 +325,7 @@
     <ClCompile Include="projects\Shared\SteeringBehaviors.cpp" />
     <ClCompile Include="projects\App_AmbientInteractions\SmartLocation.cpp" />
     <ClCompile Include="projects\App_AmbientInteractions\Script.cpp" />
+    <ClCompile Include="projects\App_AmbientInteractions\Role.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug_Exam|Win32'">Create</PrecompiledHeader>
@@ -409,6 +410,7 @@
     <ClInclude Include="projects\Shared\SteeringHelpers.h" />
     <ClInclude Include="projects\App_AmbientInteractions\SmartLocation.h" />
     <ClInclude Include="projects\App_AmbientInteractions\Script.h" />
+    <ClInclude Include="projects\App_AmbientInteractions\Role.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="projects\App_AmbientInteractions\Scripts\TwoAgentsTalking.h" />
   </ItemGroup>

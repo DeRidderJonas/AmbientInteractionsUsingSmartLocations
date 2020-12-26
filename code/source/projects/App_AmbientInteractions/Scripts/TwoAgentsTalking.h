@@ -4,7 +4,7 @@
 class TwoAgentsTalking final : public Script
 {
 public:
-	TwoAgentsTalking() : Script() {};
+	TwoAgentsTalking();
 	virtual ~TwoAgentsTalking() = default;
 
 	virtual bool IsPreconditionMet(Elite::Blackboard* pBlackboard) override;
@@ -14,5 +14,7 @@ public:
 	virtual void End() override;
 private:
 	float m_AmountOfSecondsTalking{ 2.f };
+
+	virtual bool RoleAllocation() override;
 };
 

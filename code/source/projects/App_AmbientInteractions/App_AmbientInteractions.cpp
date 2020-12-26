@@ -13,7 +13,7 @@ void App_AmbientInteractions::Start()
 
 	for (int i = 0; i < m_AmountOfAgents; i++)
 	{
-		NpcAgent* newAgent{ new NpcAgent() };
+		NpcAgent* newAgent{ new NpcAgent(Role::Name::AnyHuman) };
 		newAgent->SetBodyColor({ 1,0,0 });
 		m_pAgents.push_back(newAgent);
 		m_pAgents[i]->SetPosition(Elite::randomVector2(50.f));

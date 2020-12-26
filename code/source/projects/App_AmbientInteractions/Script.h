@@ -1,5 +1,6 @@
 #pragma once
 #include "framework/EliteAI/EliteData/EBlackboard.h"
+#include <projects/App_AmbientInteractions/Role.h>
 
 class Script
 {
@@ -15,7 +16,6 @@ public:
 	virtual bool IsEndConditionMet() = 0;
 
 	virtual void Start(Elite::Blackboard* pBlackboard);
-	//Returns wether script should be updated. (Used in derived classes)
 
 	virtual bool Update(float deltaTime);	//Returns wether script should be updated. (Used in derived classes)
 	
@@ -23,6 +23,10 @@ public:
 	virtual void OnError();
 protected:
 	Elite::Blackboard* m_pBlackboard = nullptr;
+	std::vector<Role> m_Roles{};
+	bool AreAllRolesMet(Elite::Blackboard* pBlackboard);
+	virtual bool RoleAllocation() = 0;
+
 	bool m_IsRunning = false;
 	float m_TimeElapsed = 0.f;
 };
