@@ -69,3 +69,8 @@ void TwoAgentsTalking::End()
 
     Script::End();
 }
+
+bool TwoAgentsTalking::IsEndConditionMet()
+{
+    return m_TimeElapsed >= m_AmountOfSecondsTalking;
+}

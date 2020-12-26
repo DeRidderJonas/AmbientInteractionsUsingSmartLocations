@@ -59,6 +59,11 @@ void SmartLocation::UpdateScripts(float deltaTime)
 	for (Script* pScript : m_pScripts)
 	{
 		pScript->Update(deltaTime);
+
+		if (pScript->IsEndConditionMet())
+		{
+			pScript->End();
+		}
 	}
 }
 

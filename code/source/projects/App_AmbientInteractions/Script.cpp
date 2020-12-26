@@ -11,10 +11,12 @@ void Script::Start(Elite::Blackboard* pBlackboard)
 {
 	m_pBlackboard = pBlackboard;
 	m_IsRunning = true;
+	m_TimeElapsed = 0.f;
 }
 
 bool Script::Update(float deltaTime)
 {
+	if (m_IsRunning) m_TimeElapsed += deltaTime;
 	return m_IsRunning;
 }
 

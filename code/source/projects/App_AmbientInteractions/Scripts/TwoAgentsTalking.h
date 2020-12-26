@@ -8,6 +8,7 @@ public:
 	virtual ~TwoAgentsTalking() = default;
 
 	virtual bool IsPreconditionMet(Elite::Blackboard* pBlackboard) override;
+	virtual bool IsEndConditionMet() override;
 	virtual void Start(Elite::Blackboard* pBlackboard) override;
 	virtual bool Update(float deltaTime) override;
 	virtual void End() override;

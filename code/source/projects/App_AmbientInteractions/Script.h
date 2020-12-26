@@ -12,6 +12,7 @@ public:
 	Script& operator=(Script&&) = delete;
 
 	virtual bool IsPreconditionMet(Elite::Blackboard* pBlackboard) = 0;
+	virtual bool IsEndConditionMet() = 0;
 	virtual void Start(Elite::Blackboard* pBlackboard);
 	//Returns wether script should be updated. (Used in derived classes)
 	virtual bool Update(float deltaTime);
@@ -19,5 +20,6 @@ public:
 protected:
 	Elite::Blackboard* m_pBlackboard = nullptr;
 	bool m_IsRunning = false;
+	float m_TimeElapsed = 0.f;
 };
 
