@@ -8,16 +8,29 @@ Script::~Script()
 		delete m_pBlackboard;
 }
 
+bool Script::IsPreconditionMet(Elite::Blackboard* pBlackboard)
+{
+	return !m_IsRunning && m_CooldownRemaining <= 0.f;
+}
+
+bool Script::IsEndConditionMet()
+{
+	return m_IsRunning;
+}
+
 void Script::Start(Elite::Blackboard* pBlackboard)
 {
 	m_pBlackboard = pBlackboard;
 	m_IsRunning = true;
 	m_TimeElapsed = 0.f;
+	m_CooldownRemaining = m_Cooldown;
 }
 
 bool Script::Update(float deltaTime)
 {
 	if (m_IsRunning) m_TimeElapsed += deltaTime;
+	else m_CooldownRemaining -= deltaTime;
+
 	return m_IsRunning;
 }
 

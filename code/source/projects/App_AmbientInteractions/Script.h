@@ -12,8 +12,8 @@ public:
 	Script(Script&&) = delete;
 	Script& operator=(Script&&) = delete;
 
-	virtual bool IsPreconditionMet(Elite::Blackboard* pBlackboard) = 0;
-	virtual bool IsEndConditionMet() = 0;
+	virtual bool IsPreconditionMet(Elite::Blackboard* pBlackboard);
+	virtual bool IsEndConditionMet();
 
 	virtual void Start(Elite::Blackboard* pBlackboard);
 
@@ -29,5 +29,7 @@ protected:
 
 	bool m_IsRunning = false;
 	float m_TimeElapsed = 0.f;
+	float m_Cooldown = 10.f;
+	float m_CooldownRemaining = 0.f;
 };
 

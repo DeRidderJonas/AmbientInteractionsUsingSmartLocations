@@ -10,7 +10,7 @@ TwoAgentsTalking::TwoAgentsTalking()
 
 bool TwoAgentsTalking::IsPreconditionMet(Elite::Blackboard* pBlackboard)
 {
-    if (m_IsRunning) return false;
+    if (!Script::IsPreconditionMet(pBlackboard)) return false;
 
     return Script::AreAllRolesMet(pBlackboard);
 }
@@ -77,6 +77,8 @@ void TwoAgentsTalking::End()
 
 bool TwoAgentsTalking::IsEndConditionMet()
 {
+    if (!Script::IsEndConditionMet()) return false;
+
     return m_TimeElapsed >= m_AmountOfSecondsTalking;
 }
 
