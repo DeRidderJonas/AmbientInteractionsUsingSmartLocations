@@ -26,3 +26,8 @@ void Script::End()
 	m_pBlackboard = nullptr;
 	m_IsRunning = false;
 }
+
+void Script::OnError()
+{
+	End();
+}

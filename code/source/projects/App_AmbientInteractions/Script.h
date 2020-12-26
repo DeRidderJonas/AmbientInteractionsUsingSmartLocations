@@ -13,10 +13,14 @@ public:
 
 	virtual bool IsPreconditionMet(Elite::Blackboard* pBlackboard) = 0;
 	virtual bool IsEndConditionMet() = 0;
+
 	virtual void Start(Elite::Blackboard* pBlackboard);
 	//Returns wether script should be updated. (Used in derived classes)
-	virtual bool Update(float deltaTime);
+
+	virtual bool Update(float deltaTime);	//Returns wether script should be updated. (Used in derived classes)
+	
 	virtual void End();
+	virtual void OnError();
 protected:
 	Elite::Blackboard* m_pBlackboard = nullptr;
 	bool m_IsRunning = false;

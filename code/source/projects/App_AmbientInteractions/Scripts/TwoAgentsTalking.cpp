@@ -20,6 +20,7 @@ void TwoAgentsTalking::Start(Elite::Blackboard* pBlackboard)
     std::vector<NpcAgent*>* pAgents = nullptr;
     pBlackboard->GetData("agents", pAgents);
 
+    //Shuffle all participants to counter any unintentional bias towards first or last NPC
     size_t randAgent0{ rand() % pAgents->size() };
     NpcAgent* agent0{ pAgents->at(randAgent0) };
     size_t randAgent1{ rand() % pAgents->size() };
@@ -45,6 +46,12 @@ bool TwoAgentsTalking::Update(float deltaTime)
     m_pBlackboard->GetData("agent0", agent0);
     m_pBlackboard->GetData("agent1", agent1);
 
+    if (agent0 == nullptr || agent1 == nullptr)
+    {
+        OnError();
+        return false;
+    }
+
     Elite::Vector2 inBetween{ (agent0->GetPosition() + agent1->GetPosition()) / 2 };
     TargetData target{};
     target.Position = inBetween;
@@ -64,8 +71,8 @@ void TwoAgentsTalking::End()
     m_pBlackboard->GetData("agent0", agent0);
     m_pBlackboard->GetData("agent1", agent1);
 
-    agent0->Release();
-    agent1->Release();
+    if(agent0) agent0->Release();
+    if(agent1) agent1->Release();
 
     Script::End();
 }
