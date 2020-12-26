@@ -51,6 +51,11 @@ void Role::AcquireAgent(NpcAgent* pAgent)
 	m_pAgents.push_back(pAgent);
 }
 
+std::vector<NpcAgent*>& Role::GetAgents()
+{
+	return m_pAgents;
+}
+
 void Role::OnScriptEnd()
 {
 	for (NpcAgent* pAgent : m_pAgents)

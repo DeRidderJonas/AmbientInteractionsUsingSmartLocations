@@ -18,14 +18,17 @@ public:
 	virtual void Start(Elite::Blackboard* pBlackboard);
 
 	virtual bool Update(float deltaTime);	//Returns wether script should be updated. (Used in derived classes)
-	
+
 	virtual void End();
 	virtual void OnError();
+
+	virtual bool IsDynamicJoinPrecoditionMet();
+	virtual bool DynamicJoin();
 protected:
 	Elite::Blackboard* m_pBlackboard = nullptr;
 	std::vector<Role> m_Roles{};
 	bool AreAllRolesMet(Elite::Blackboard* pBlackboard);
-	bool RoleAllocation();
+	bool RoleAllocation(bool dynamicJoin);
 
 	bool m_IsRunning = false;
 	float m_TimeElapsed = 0.f;

@@ -34,6 +34,7 @@ public:
 
 	void AcquireAgent(NpcAgent* pAgent);
 	NpcAgent* operator[](std::size_t idx) { return m_pAgents[idx]; }
+	std::vector<NpcAgent*>& GetAgents();
 	void OnScriptEnd();
 
 	inline friend Name operator| (Name a, Name b) { return (Name)((int)a | (int)b); }

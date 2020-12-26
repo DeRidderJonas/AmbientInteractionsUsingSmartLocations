@@ -8,11 +8,11 @@ public:
 	AgentsTalking(size_t agents, size_t agents_dynamic);
 	virtual ~AgentsTalking() = default;
 
-	virtual bool IsPreconditionMet(Elite::Blackboard* pBlackboard) override;
 	virtual bool IsEndConditionMet() override;
 	virtual void Start(Elite::Blackboard* pBlackboard) override;
 	virtual bool Update(float deltaTime) override;
 	virtual void End() override;
+	virtual bool DynamicJoin() override;
 private:
 	float m_AmountOfSecondsTalking{ 10.f };
 };

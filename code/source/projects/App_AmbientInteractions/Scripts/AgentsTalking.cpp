@@ -14,52 +14,45 @@ AgentsTalking::AgentsTalking(size_t agents, size_t agents_dynamic)
 {
 }
 
-bool AgentsTalking::IsPreconditionMet(Elite::Blackboard* pBlackboard)
-{
-    if (!Script::IsPreconditionMet(pBlackboard)) return false;
-
-    return Script::AreAllRolesMet(pBlackboard);
-}
-
 void AgentsTalking::Start(Elite::Blackboard* pBlackboard)
 {
     Script::Start(pBlackboard);
-    bool roleAllocationSuccess = RoleAllocation();
-    if (!roleAllocationSuccess)
+
+    if (!m_IsRunning) return;
+
+    std::vector<NpcAgent*> agents{ m_Roles[0].GetAgents() };
+    Elite::Vector2 inBetween{};
+    for (NpcAgent* pAgent : agents) inBetween += pAgent->GetPosition();
+    inBetween /= float(agents.size());
+
+    TargetData target{};
+    target.Position = inBetween;
+    for (NpcAgent* pAgent : agents)
     {
-        std::cout << "Role allocation failed" << '\n';
-        OnError();
-        return;
+        pAgent->SetTarget(target);
+        pAgent->SetToSeek();
     }
 
-    NpcAgent* agent0 = m_Roles[0][0];
-    NpcAgent* agent1 = m_Roles[0][1];
-
-    agent0->SetToSeek();
-    agent1->SetToSeek();
+    m_pBlackboard->AddData("Target", target);
 }
 
 bool AgentsTalking::Update(float deltaTime)
 {
     if(!Script::Update(deltaTime)) return false;
 
-    NpcAgent* agent0 = m_Roles[0][0];
-    NpcAgent* agent1 = m_Roles[0][1];
+    std::vector<NpcAgent*> agents{ m_Roles[0].GetAgents() };
+    agents.insert(agents.end(), m_Roles[1].GetAgents().begin(), m_Roles[1].GetAgents().end());
 
-    if (agent0 == nullptr || agent1 == nullptr)
+    if (agents.size() <= 0)
     {
         OnError();
         return false;
     }
-
-    Elite::Vector2 inBetween{ (agent0->GetPosition() + agent1->GetPosition()) / 2 };
-    TargetData target{};
-    target.Position = inBetween;
-    agent0->SetTarget(target);
-    agent1->SetTarget(target);
-
-    agent0->SetBodyColor({ 0,0,1,1 });
-    agent1->SetBodyColor({ 0,0,1,1 });
+    
+    for (NpcAgent* pAgent : agents)
+    {
+        pAgent->SetBodyColor({ 0,0,1,1 });
+    }
 
     return true;
 }
@@ -67,6 +60,25 @@ bool AgentsTalking::Update(float deltaTime)
 void AgentsTalking::End()
 {
     Script::End();
+}
+
+bool AgentsTalking::DynamicJoin()
+{
+    //When another agent joins, reset the timer to 0 (otherwise he might join just before the conversation ends)
+    m_TimeElapsed = 0.f;
+
+    bool dynamicJoinSuccess = Script::DynamicJoin();
+    if (!dynamicJoinSuccess) return false;
+
+    TargetData target{};
+    m_pBlackboard->GetData("Target", target);
+
+    for (NpcAgent* pAgent : m_Roles[1].GetAgents())
+    {
+        pAgent->SetTarget(target);
+        pAgent->SetToSeek();
+    }
+    return true;
 }
 
 bool AgentsTalking::IsEndConditionMet()

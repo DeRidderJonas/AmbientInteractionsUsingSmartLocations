@@ -58,7 +58,13 @@ void SmartLocation::UpdateScripts(float deltaTime)
 {
 	for (Script* pScript : m_pScripts)
 	{
-		pScript->Update(deltaTime);
+		bool isActive = pScript->Update(deltaTime);
+		if (!isActive) continue;
+
+		if (pScript->IsDynamicJoinPrecoditionMet())
+		{
+			pScript->DynamicJoin();
+		}
 
 		if (pScript->IsEndConditionMet())
 		{
