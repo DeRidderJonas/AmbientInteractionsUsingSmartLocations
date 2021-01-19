@@ -7,7 +7,7 @@ It was inspired by this [research paper](http://www.gameaipro.com/GameAIPro3/Gam
 
 *When I'm talking about Agents, they can refer to NPCs or a player. This means any Character that can interact with anything*
 
-![Smart Location Agents Talking](/Assets/AgentsTalking.gif)
+![Smart Location Agents Talking](/Assets/AgentsTalking.gif)  
 This Smart Location represents 2 agents talking and a third agent joining afterwards. We'll go over how this works later.
 
 # Smart Locations
@@ -27,13 +27,13 @@ If the Smart Location finds a match, it will start the script using the matching
 The Smart Location is also the one to end the script when the end condition for the script has been met.
 
 ## Implementation
-[SmartLocation.h](/code/source/projects/App_AmbientInteractions/SmartLocation.h)
+[SmartLocation.h](/code/source/projects/App_AmbientInteractions/SmartLocation.h)  
 `void NotifyAgents(std::vector<NpcAgent*>& agents);` uses the agents given to it (all agents available for Smart Locations, in this project: all agents) and checks wether they are available.
 `void StartScript();` and `void UpdateScripts(float deltaTime);` will start and Update or End scripts respectively.
 
 # Agent
-Agents can represent humans or animals. They are represented by a circle with an arrow in it (Default in Box2D).
-![Agent representation](/Assets/AgentRepresentation.png)
+Agents can represent humans or animals. They are represented by a circle with an arrow in it (Default in Box2D).  
+![Agent representation](/Assets/AgentRepresentation.png)  
 The color of the agent body varies depending on wether the agent in within the reach of a Smart Location and the script it participates in.
 Color | Meaning
 ----- | -------
@@ -46,7 +46,7 @@ Black | Used in script [DancingHumans](/code/source/projects/App_AmbientInteract
 Agents can only assume certain [roles](#Role).
 
 ## Implementation
-[NpcAgent.h](/code/source/projects/App_AmbientInteractions/NpcAgent.h)
+[NpcAgent.h](/code/source/projects/App_AmbientInteractions/NpcAgent.h)  
 The NpcAgents are pretty basic. They can use simple steering behaviors and hold some data to check wether they can assume a given role and wether they are available for scripts.
 
 # Role
@@ -64,7 +64,7 @@ An agent can have these roles:
 		* Bird
 
 ## Implementation
-[Role.h](/code/source/projects/App_AmbientInteractions/Role.h)
+[Role.h](/code/source/projects/App_AmbientInteractions/Role.h)  
 The roles are used during Role Allocation to check wether the script can start so it has data members for this and data members for when the script is executing.
 
 # Script
@@ -74,10 +74,13 @@ Each script uses a personal blackboard for whatever information it might need.
 At this moment there are only 2 scripts: [AgentsTalking](/code/source/projects/App_AmbientInteractions/Scripts/AgentsTalking.h) and [DancingHumans](/code/source/projects/App_AmbientInteractions/Scripts/DancingHumans.h).
 The names are quite self explanatory. The project was build to make it as easy as possible to add new scripts.
 
-![AgentsTalking](/Assets/AgentsTalking.gif)
-2 agents enter the Smart Location. After a couple of seconds, a third agent joins. After the agents are done talking, they all leave.
-![DancingHumans](/Assets/DancingHumans.gif)
-3 agents enter the Smart Location. They assume start positions and start dancing (due to lack of animations, they just run around in a circle). When more agents enter the Smart Location, they are considered the audience and they will stand and watch.
+## Agents Talking
+![AgentsTalking](/Assets/AgentsTalking.gif)  
+2 agents enter the Smart Location. After a couple of seconds, a third agent joins. After the agents are done talking, they all leave.  
+
+## Dancing Humans
+![DancingHumans](/Assets/DancingHumans.gif)  
+3 agents enter the Smart Location. They assume start positions and start dancing (due to lack of animations, they just run around in a circle). When more agents enter the Smart Location, they are considered the audience and they will stand and watch.  
 
 In both gifs above, agents will continue to walk into the Smart Location even after all spots have been filled. In this case, they will be ignored by the script and act as if they weren't there.
 
