@@ -10,14 +10,17 @@ public:
 		Citizen = 1,
 		Tourist = 2,
 		Jogger = 4,
-		Animal = 8,
+		Dog = 8,
+		Bird = 16,
+		Animal = Dog | Bird,
 		AnyHuman = Citizen | Tourist | Jogger,
 		Any = AnyHuman | Animal
 	};
 	enum class Flag
 	{
+		None = 0,
 		DynamicJoin = 1,	//Can only join when Script has already started
-		LeaveAfterEnd = 2	//Should agents move away after script has ended
+		LeaveAfterEnd = 2,	//Should agents move away after script has ended
 	};
 
 	Role(Name names, Flag flags, size_t cardinality_min, size_t cardinality_max);
