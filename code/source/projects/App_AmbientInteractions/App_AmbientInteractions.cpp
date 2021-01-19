@@ -22,13 +22,11 @@ void App_AmbientInteractions::Start()
 		m_pAgents[i]->SetPosition(Elite::randomVector2(50.f));
 	}
 	
-	m_pScripts.push_back(new AgentsTalking(2, 1));
-	m_pScripts.push_back(new DancingHumans(3, 4, 1, 5));
 
-	std::vector<Script*> sl0{ m_pScripts[0] };
+	std::vector<Script*> sl0{ new AgentsTalking(2, 1) };
 	m_pSmartLocations.push_back(new SmartLocation(sl0, Elite::Vector2{-m_TrimWorldSize / 2.f,0}));
 
-	std::vector<Script*> sl1{ m_pScripts[1] };
+	std::vector<Script*> sl1{ new DancingHumans(3, 4, 1, 5) };
 	m_pSmartLocations.push_back(new SmartLocation(sl1, Elite::Vector2{ m_TrimWorldSize / 2.f, 0.f }));
 }
 
