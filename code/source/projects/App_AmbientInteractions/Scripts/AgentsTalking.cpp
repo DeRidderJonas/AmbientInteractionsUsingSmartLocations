@@ -29,8 +29,8 @@ void AgentsTalking::Start(Elite::Blackboard* pBlackboard)
     target.Position = inBetween;
     for (NpcAgent* pAgent : agents)
     {
-        pAgent->SetTarget(target);
         pAgent->SetToSeek();
+        pAgent->SetTarget(target);
     }
 
     m_pBlackboard->AddData("Target", target);
@@ -57,11 +57,6 @@ bool AgentsTalking::Update(float deltaTime)
     return true;
 }
 
-void AgentsTalking::End()
-{
-    Script::End();
-}
-
 bool AgentsTalking::DynamicJoin()
 {
     //When another agent joins, reset the timer to 0 (otherwise he might join just before the conversation ends)
@@ -75,8 +70,8 @@ bool AgentsTalking::DynamicJoin()
 
     for (NpcAgent* pAgent : m_Roles[1].GetAgents())
     {
-        pAgent->SetTarget(target);
         pAgent->SetToSeek();
+        pAgent->SetTarget(target);
     }
     return true;
 }

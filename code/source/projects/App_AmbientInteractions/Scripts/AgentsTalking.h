@@ -11,7 +11,6 @@ public:
 	virtual bool IsEndConditionMet() override;
 	virtual void Start(Elite::Blackboard* pBlackboard) override;
 	virtual bool Update(float deltaTime) override;
-	virtual void End() override;
 	virtual bool DynamicJoin() override;
 private:
 	float m_AmountOfSecondsTalking{ 10.f };
