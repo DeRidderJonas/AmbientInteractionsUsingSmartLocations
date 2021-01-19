@@ -296,6 +296,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="projects\App_AmbientInteractions\Scripts\DancingHumans.cpp" />
     <ClCompile Include="projects\App_AmbientInteractions\NpcAgent.cpp" />
     <ClCompile Include="projects\App_AmbientInteractions\App_AmbientInteractions.cpp" />
     <ClCompile Include="framework\EliteAI\EliteDecisionMaking\EliteBehaviorTree\EBehaviorTree.cpp" />
@@ -335,6 +336,7 @@
     <ClCompile Include="projects\App_AmbientInteractions\Scripts\AgentsTalking.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="projects\App_AmbientInteractions\Scripts\DancingHumans.h" />
     <ClInclude Include="projects\App_AmbientInteractions\NpcAgent.h" />
     <ClInclude Include="projects\App_AmbientInteractions\App_AmbientInteractions.h" />
     <ClInclude Include="framework\EliteAI\EliteData\EBlackboard.h" />

@@ -33,6 +33,7 @@
     <ClCompile Include="projects\App_AmbientInteractions\NpcAgent.cpp" />
     <ClCompile Include="projects\App_AmbientInteractions\Role.cpp" />
     <ClCompile Include="projects\App_AmbientInteractions\Scripts\AgentsTalking.cpp" />
+    <ClCompile Include="projects\App_AmbientInteractions\Scripts\DancingHumans.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="projects\App_Selector.h" />
@@ -113,6 +114,7 @@
     <ClInclude Include="projects\App_AmbientInteractions\NpcAgent.h" />
     <ClInclude Include="projects\App_AmbientInteractions\Role.h" />
     <ClInclude Include="projects\App_AmbientInteractions\Scripts\AgentsTalking.h" />
+    <ClInclude Include="projects\App_AmbientInteractions\Scripts\DancingHumans.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="imgui.ini" />

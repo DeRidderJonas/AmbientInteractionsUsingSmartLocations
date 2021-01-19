@@ -13,6 +13,8 @@ public:
 	void Release() { m_IsAvailable = true; }
 
 	bool CanAssumeRole(Role::Name roleName);
+
+	bool IsAtTarget() const;
 private:
 	bool m_IsAvailable = true;
 	Role::Name m_CanAssumeRoles{};
