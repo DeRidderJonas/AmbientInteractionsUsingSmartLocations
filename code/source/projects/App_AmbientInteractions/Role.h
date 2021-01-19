@@ -47,10 +47,10 @@ public:
 	inline friend Flag operator& (Flag a, Flag b) { return (Flag)((int)a & (int)b); }
 	inline friend Flag operator^ (Flag a, Flag b) { return (Flag)((int)a ^ (int)b); }
 private:
-	Name m_Names; //Bits hold wether role is active
+	Name m_Names; //Bits hold which role is active
 	size_t m_Cardinality_min; //Minimum number of Actors of this role
 	size_t m_Cardinality_max; //Maximum number of Actors of this role
-	Flag m_Flags; //Bits hold wether role is active
+	Flag m_Flags; //Bits hold which flags are active
 
 	//Used while checking wether there's enough agents
 	size_t m_AmountNPCs = 0;
