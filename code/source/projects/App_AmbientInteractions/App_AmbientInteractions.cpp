@@ -1,5 +1,7 @@
 #include "stdafx.h"
 #include "App_AmbientInteractions.h"
+#include "Scripts/DancingHumans.h"
+#include "Scripts/AgentsTalking.h"
 
 App_AmbientInteractions::~App_AmbientInteractions()
 {
@@ -15,11 +17,19 @@ void App_AmbientInteractions::Start()
 	{
 		NpcAgent* newAgent{ new NpcAgent(Role::Name::AnyHuman) };
 		newAgent->SetBodyColor({ 1,0,0 });
+		newAgent->SetMass(0.f);
 		m_pAgents.push_back(newAgent);
 		m_pAgents[i]->SetPosition(Elite::randomVector2(50.f));
 	}
+	
+	m_pScripts.push_back(new AgentsTalking(2, 1));
+	m_pScripts.push_back(new DancingHumans(3, 4, 1, 5));
 
-	m_pSmartLocations.push_back(new SmartLocation(Elite::Vector2{0,0}));
+	std::vector<Script*> sl0{ m_pScripts[0] };
+	m_pSmartLocations.push_back(new SmartLocation(sl0, Elite::Vector2{-m_TrimWorldSize / 2.f,0}));
+
+	std::vector<Script*> sl1{ m_pScripts[1] };
+	m_pSmartLocations.push_back(new SmartLocation(sl1, Elite::Vector2{ m_TrimWorldSize / 2.f, 0.f }));
 }
 
 void App_AmbientInteractions::Update(float deltaTime)

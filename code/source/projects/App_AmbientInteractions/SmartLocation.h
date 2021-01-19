@@ -5,7 +5,7 @@
 class SmartLocation
 {
 public:
-	SmartLocation(const Elite::Vector2& position, float notifyRange = 10.f);
+	SmartLocation(const std::vector<Script*>& scripts, const Elite::Vector2& position, float notifyRange = 20.f);
 	~SmartLocation();
 	SmartLocation(const SmartLocation&) = delete;
 	SmartLocation& operator=(const SmartLocation&) = delete;

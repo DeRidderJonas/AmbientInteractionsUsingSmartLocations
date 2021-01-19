@@ -24,5 +24,6 @@ private:
 
 	//Smart locations
 	std::vector<SmartLocation*> m_pSmartLocations{};
+	std::vector<Script*> m_pScripts{};
 };
 

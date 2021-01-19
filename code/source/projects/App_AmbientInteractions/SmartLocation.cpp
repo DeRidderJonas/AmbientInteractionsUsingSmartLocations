@@ -1,17 +1,16 @@
 #include "stdafx.h"
 #include "SmartLocation.h"
 #include "projects/App_AmbientInteractions/Scripts/AgentsTalking.h"
+#include "projects/App_AmbientInteractions/Scripts/DancingHumans.h"
 
-SmartLocation::SmartLocation(const Elite::Vector2& position, float notifyRange)
-	: m_Position{ position }
+SmartLocation::SmartLocation(const std::vector<Script*>& scripts, const Elite::Vector2& position, float notifyRange)
+	: m_pScripts{ scripts }
+	, m_Position{ position }
 	, m_NotifyRange{notifyRange}
 {
 	//Setup smart location blackboard
 	m_pBlackboard = new Elite::Blackboard();
 	m_pBlackboard->AddData("agents", &m_AvailableAgents);
-
-	//Add available scripts
-	m_pScripts.push_back(new AgentsTalking(2,1));
 }
 
 SmartLocation::~SmartLocation()
@@ -77,6 +76,7 @@ Blackboard* SmartLocation::MakeBlackboard()
 {
 	Elite::Blackboard* pBlackboard = new Elite::Blackboard();
 	pBlackboard->AddData("agents", &m_AvailableAgents);
+	pBlackboard->AddData("location", m_Position);
 
 	return pBlackboard;
 }
