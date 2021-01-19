@@ -42,7 +42,7 @@ bool Role::IsCardinalitySatisfied() const
 
 bool Role::CanAcquireAgent() const
 {
-	return m_AmountNPCs < m_Cardinality_max;
+	return m_pAgents.size() < m_Cardinality_max;
 }
 
 void Role::AcquireAgent(NpcAgent* pAgent)
@@ -65,4 +65,5 @@ void Role::OnScriptEnd()
 	}
 
 	ResetCardinality();
+	m_pAgents.clear();
 }
