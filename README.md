@@ -90,4 +90,7 @@ In both gifs above, agents will continue to walk into the Smart Location even af
 1. Override the necessary methods. These will always include `virtual void Start(Elite::Blackboard* pBlackboard) override;` and `virtual bool Update(float deltaTime) override;`. It's important to call the Script version of these functions as well because they are responsible for initialization.
 1. Add it to a Smart Location
 
+# Future
+This was obviously a small project. Big games using the concept of Smart Locations need to make decisions on where to store data from the agents, wether they're available, compatible, etc... In the [research paper](http://www.gameaipro.com/GameAIPro3/GameAIPro3_Chapter35_Ambient_Interactions_Improving_Believability_by_Leveraging_Rule-Based_AI.pdf) mentioned before, they recommend a Tuple space where all of this data can be stored and accessed by the Smart Locations.
 
+This project was also limited to a certain amount of agents and the scripts were made according to that amount. Also, it did not matter how they entered the Smart Location and the Smart Locations were always accessible. If larger amounts of agents are needed or if the Smart Location was placed in a location than "" was not (easily) accesible for agents, an "NPC spawner" is required. This spawner should provide the needed agents for the scripts.
