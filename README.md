@@ -11,13 +11,13 @@ It was inspired by this [research paper](http://www.gameaipro.com/GameAIPro3/Gam
 This Smart Location represents 2 agents talking and a third agent joining afterwards. We'll go over how this works later.
 
 # Smart Locations
-##What is a Smart Location?
+## What is a Smart Location?
 A Smart Location is a place inside your game world where NPCs or the players can interact with certain objects and each other.
 In this project, we only focus on NPCs interacting with each other. But it was built so these extra interactions could be easily added.
 An example of a Smart Location could be: A table with a couple of chairs. The agents can interact with these chairs by sitting on them, or they could put some object on the table.
 
 In this project, a Smart Location is represented by a green circle.
-![Smart Location representation](/Assets/SmartLocationRepresentation.png)
+<img src="/Assets/SmartLocationRepresentation.png" alt="Smart Location representation" width="250" height="250">
 
 ## How to use them
 In order for the Smart Location to be able to do something, it has to know about the [agents](#Agent) within reach and the [scripts](#Script) it can execute.
